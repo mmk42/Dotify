@@ -47,7 +47,7 @@
         android:id="@+id/txtSongTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:text="Strangers"
         app:layout_constraintTop_toBottomOf="@id/imgSongCover"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,6 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_media_previous"
+
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtNumPlays"
@@ -92,6 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_media_play"
+
         app:layout_constraintTop_toBottomOf="@id/txtNumPlays"
         app:layout_constraintStart_toEndOf="@id/imgPlayPrev"
         app:layout_constraintEnd_toStartOf="@id/imgPlayNext"/>
@@ -101,6 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_media_next"
+
         app:layout_constraintTop_toBottomOf="@id/txtNumPlays"
         app:layout_constraintStart_toEndOf="@id/imgPlay"
         app:layout_constraintEnd_toEndOf="parent" />

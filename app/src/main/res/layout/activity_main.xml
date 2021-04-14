@@ -20,9 +20,23 @@
         android:id="@+id/txtUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Name"
+        android:textSize="20sp"
+        android:text="Username"
+        android:visibility="visible"
         app:layout_constraintBaseline_toBaselineOf="@id/btnChangeUser"
         app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <EditText
+        android:id="@+id/edtxtUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:textSize="20sp"
+        android:text="Username"
+        android:visibility = "gone"
+        app:layout_constraintBaseline_toBaselineOf="@id/btnChangeUser"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 
     <androidx.constraintlayout.widget.Barrier
@@ -57,7 +71,7 @@
         android:id="@+id/txtArtistName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:text="Seven Lions featurning Trove Lo, Myon, Shane"
         android:maxLines="1"
         android:ellipsize="end"
@@ -69,7 +83,7 @@
         android:id="@+id/txtNumPlays"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:text="Number Plays"
         app:layout_constraintTop_toBottomOf="@id/txtArtistName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +95,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_media_previous"
-
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtNumPlays"
@@ -107,6 +120,8 @@
         app:layout_constraintTop_toBottomOf="@id/txtNumPlays"
         app:layout_constraintStart_toEndOf="@id/imgPlay"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

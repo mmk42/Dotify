@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.i("created_1_mmk42", "created!")
         btnChangeUser = findViewById(R.id.btnChangeUser)
         btnPlayPrev = findViewById(R.id.imgPlayPrev)
         btnPlayNext = findViewById(R.id.imgPlayNext)
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         edtxtUsername = findViewById(R.id.edtxtUsername)
         imgSongCover = findViewById(R.id.imgSongCover)
 
-        Log.i("created_3_mmk42", "created")
+        // Click Listeners
         btnChangeUser.setOnClickListener {
             changeUserClicked(btnChangeUser)
         }
@@ -47,18 +46,16 @@ class MainActivity : AppCompatActivity() {
         btnPlay.setOnClickListener{
             playClicked()
         }
-
         imgSongCover.setOnLongClickListener{
             songCoverLongClick()
             true
         }
         txtNumPlays.text = "$randomNumber plays"
-        Log.i("created_2_mmk42", "created")
     }
 
+    // changes the username
     fun changeUserClicked(btnChangeUser: Button) {
-        // add in button visibility later
-        Log.i("testingmmk42", "clicking works")
+        //
         if(txtUsername.visibility == View.GONE) {
             if(edtxtUsername.text.toString() == ""){
                 Toast.makeText(this, "Username cannot be empty", Toast.LENGTH_SHORT).show()
@@ -74,20 +71,22 @@ class MainActivity : AppCompatActivity() {
             btnChangeUser.text = "Apply"
         }
 
-        Log.i("testing2mmk42", "after clicking works")
     }
 
+    // Toasts when prev button is clicked
     fun playPrevClicked(){
         Toast.makeText(this, "Skipping to previous track", Toast.LENGTH_SHORT).show()
     }
+    //Toasts when next button is clicked
     fun playNextClicked(){
         Toast.makeText(this, "Skipping to next track", Toast.LENGTH_SHORT).show()
     }
+    // increments the number of plays when the play button is clicked
     fun playClicked(){
         randomNumber = randomNumber + 1
         txtNumPlays.text = "$randomNumber plays"
     }
-
+    // chenges the color or the number of plays when the song cover is long clicked
     fun songCoverLongClick(){
         txtNumPlays.setTextColor(Color.argb(255, Random.nextInt(256), Random.nextInt(256), Random.nextInt(256)))
     }

@@ -1,5 +1,6 @@
 package edu.uw.mmk42.dotify
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var txtNumPlays: TextView
     private lateinit var txtUsername: TextView
     private lateinit var edtxtUsername: EditText
+    private lateinit var imgSongCover: ImageView
     private var randomNumber = Random.nextInt(1000, 10000)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         txtNumPlays = findViewById(R.id.txtNumPlays)
         txtUsername = findViewById(R.id.txtUsername)
         edtxtUsername = findViewById(R.id.edtxtUsername)
+        imgSongCover = findViewById(R.id.imgSongCover)
 
         Log.i("created_3_mmk42", "created")
         btnChangeUser.setOnClickListener {
@@ -45,6 +48,10 @@ class MainActivity : AppCompatActivity() {
             playClicked()
         }
 
+        imgSongCover.setOnLongClickListener{
+            songCoverLongClick()
+            true
+        }
         txtNumPlays.text = "$randomNumber plays"
         Log.i("created_2_mmk42", "created")
     }
@@ -52,12 +59,15 @@ class MainActivity : AppCompatActivity() {
     fun changeUserClicked(btnChangeUser: Button) {
         // add in button visibility later
         Log.i("testingmmk42", "clicking works")
-        Toast.makeText(this, "change user!!", Toast.LENGTH_SHORT).show()
         if(txtUsername.visibility == View.GONE) {
-            txtUsername.visibility = View.VISIBLE
-            edtxtUsername.visibility = View.GONE
-            txtUsername.text = edtxtUsername.text
-            btnChangeUser.text = "Change User"
+            if(edtxtUsername.text.toString() == ""){
+                Toast.makeText(this, "Username cannot be empty", Toast.LENGTH_SHORT).show()
+            } else {
+                txtUsername.visibility = View.VISIBLE
+                edtxtUsername.visibility = View.GONE
+                txtUsername.text = edtxtUsername.text
+                btnChangeUser.text = "Change User"
+            }
         } else {
             txtUsername.visibility = View.GONE
             edtxtUsername.visibility = View.VISIBLE
@@ -76,5 +86,9 @@ class MainActivity : AppCompatActivity() {
     fun playClicked(){
         randomNumber = randomNumber + 1
         txtNumPlays.text = "$randomNumber plays"
+    }
+
+    fun songCoverLongClick(){
+        txtNumPlays.setTextColor(Color.argb(255, Random.nextInt(256), Random.nextInt(256), Random.nextInt(256)))
     }
 }

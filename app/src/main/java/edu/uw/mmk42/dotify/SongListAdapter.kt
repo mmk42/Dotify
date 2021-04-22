@@ -41,8 +41,8 @@ class SongListAdapter(private var listOfSongs: List<Song>): RecyclerView.Adapter
 
     fun updateSongs(newSongs: List<Song>) {
         //non-animated method
-        /*
-        this.listOfSongs = newSongs
+
+        /*this.listOfSongs = newSongs
         notifyDataSetChanged()*/
         // animated way of applying updates
         val callback = SongDiffCallback(listOfSongs, newSongs)

@@ -50,8 +50,9 @@ class SongListActivity : AppCompatActivity() {
                 adapter.updateSongs(newList)*/
                 val newSongs = songs.toMutableList().apply {
                     Log.i("mmk42-11", "position to delete is $position")
-                    removeAt(position)
+                    remove(song)
                 }
+                songs = newSongs
                 Log.i("mmk42-12", "position to delete is $position")
                 adapter.updateSongs(newSongs)
                 Toast.makeText(this@SongListActivity, root.context.getString(R.string.remove_song_format, song.title), Toast.LENGTH_SHORT).show()

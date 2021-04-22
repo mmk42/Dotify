@@ -11,21 +11,24 @@ import edu.uw.mmk42.dotify.databinding.ActivitySongListBinding
 class SongListActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySongListBinding
     private lateinit var currSong: Song
+    private lateinit var songs: List<Song>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_song_list)
         title = "All Songs"
         binding = ActivitySongListBinding.inflate(layoutInflater).apply { setContentView(root) }
         //val songs = listOf("dua lipa", "justin", "taylor swift", "lauv")
-        val songs = SongDataProvider.getAllSongs()
+        songs = SongDataProvider.getAllSongs()
         with(binding) {
             val adapter = SongListAdapter(songs)
             rvSongs.adapter = adapter
 
             adapter.onSongClickListener = {position, song ->
                 currSong = song
+                tvCurrSong.visibility = View.VISIBLE
                 tvCurrSong.text = root.context.getString(R.string.curr_song_format, song.title,song.artist)
                 //Toast.makeText(this@SongListActivity, "You clicked at pos: $position for $song", Toast.LENGTH_SHORT).show()
+
             }
 
             btnShuffle.setOnClickListener {
@@ -35,6 +38,20 @@ class SongListActivity : AppCompatActivity() {
 
             tvCurrSong.setOnClickListener {
                 navigateToPlayerActivity(this@SongListActivity, currSong)
+            }
+
+
+
+            adapter.onSongLongClickListener = {position, song ->
+                currSong = song
+                //tvCurrSong.text = ""
+                //tvCurrSong.visibility = View.GONE
+                var newList = songs.toMutableList()
+                newList.removeAt(position)
+                songs = newList
+                adapter.updateSongs(newList)
+                Toast.makeText(this@SongListActivity, root.context.getString(R.string.remove_song_format, song.title), Toast.LENGTH_SHORT).show()
+                true
             }
         }
     }

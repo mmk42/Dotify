@@ -12,7 +12,7 @@ import edu.uw.mmk42.dotify.databinding.ItemSongBinding
 class SongListAdapter(private var listOfSongs: List<Song>): RecyclerView.Adapter<SongListAdapter.SongViewHolder>() {
 
     var onSongClickListener: (position: Int, song: Song) -> Unit = {position, song ->}
-
+    var onSongLongClickListener: (position: Int, song: Song) -> Unit = {position, song ->}
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val binding = ItemSongBinding.inflate(LayoutInflater.from(parent.context))
         return SongViewHolder(binding)
@@ -26,6 +26,10 @@ class SongListAdapter(private var listOfSongs: List<Song>): RecyclerView.Adapter
             ivCoverArt.setImageResource(song.smallImageID)
             itemRoot.setOnClickListener{
                 onSongClickListener(position, song)
+            }
+            itemRoot.setOnLongClickListener{
+                onSongLongClickListener(position, song)
+                true
             }
         }
     }

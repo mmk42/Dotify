@@ -4,13 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
-import edu.uw.mmk42.dotify.databinding.ActivityMainBinding
 import edu.uw.mmk42.dotify.databinding.ActivitySongListBinding
 
 class SongListActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySongListBinding
-
+    private lateinit var currSong: Song
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_song_list)
@@ -23,6 +23,7 @@ class SongListActivity : AppCompatActivity() {
             rvSongs.adapter = adapter
 
             adapter.onSongClickListener = {position, song ->
+                currSong = song
                 tvCurrSong.text = root.context.getString(R.string.curr_song_format, song.title,song.artist)
                 //Toast.makeText(this@SongListActivity, "You clicked at pos: $position for $song", Toast.LENGTH_SHORT).show()
             }
@@ -33,7 +34,7 @@ class SongListActivity : AppCompatActivity() {
             }
 
             tvCurrSong.setOnClickListener {
-                //navigateToPlayerActivity(song)
+                navigateToPlayerActivity(this@SongListActivity, currSong)
             }
         }
     }

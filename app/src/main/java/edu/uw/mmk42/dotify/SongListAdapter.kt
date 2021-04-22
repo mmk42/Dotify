@@ -1,10 +1,12 @@
 package edu.uw.mmk42.dotify
 
 import android.media.Image
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ericchee.songdataprovider.Song
 import edu.uw.mmk42.dotify.databinding.ItemSongBinding
@@ -37,10 +39,17 @@ class SongListAdapter(private var listOfSongs: List<Song>): RecyclerView.Adapter
     override fun getItemCount(): Int = listOfSongs.size
 
 
-    fun updateSongs(newListOfSongs: List<Song>) {
-        this.listOfSongs = newListOfSongs
-
-        notifyDataSetChanged()
+    fun updateSongs(newSongs: List<Song>) {
+        //non-animated method
+        /*
+        this.listOfSongs = newSongs
+        notifyDataSetChanged()*/
+        // animated way of applying updates
+        val callback = SongDiffCallback(listOfSongs, newSongs)
+        val diffResult = DiffUtil.calculateDiff(callback)
+        diffResult.dispatchUpdatesTo(this)
+        // We update the list
+        listOfSongs = newSongs
     }
 
     class SongViewHolder(val binding: ItemSongBinding): RecyclerView.ViewHolder(binding.root)

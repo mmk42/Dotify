@@ -28,16 +28,6 @@ fun navigateToPlayerActivity(context: Context, song: Song) = with(context) {
 class PlayerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlayerActivityBinding
-    private lateinit var btnChangeUser: Button
-    private lateinit var imgPlayPrev: ImageView
-    private lateinit var imgPlayNext: ImageView
-    private lateinit var imgPlay: ImageView
-    private lateinit var txtNumPlays: TextView
-    private lateinit var txtUsername: TextView
-    private lateinit var edtxtUsername: EditText
-    private lateinit var imgSongCover: ImageView
-    private lateinit var txtSongTitle: TextView
-    private lateinit var txtArtistName: TextView
     private var randomNumber = Random.nextInt(1000, 10000)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +40,10 @@ class PlayerActivity : AppCompatActivity() {
             val song: Song? = intent.getParcelableExtra<Song>(SONG_KEY)
             txtArtistName.text = song?.artist
             txtSongTitle.text = song?.title
-            imgSongCover.setImageResource(song!!.largeImageID) // ASK IF THIS IS OK
+            if (song != null) {
+                imgSongCover.setImageResource(song.largeImageID)
+            }
+
 
             // Click Listeners
             /*

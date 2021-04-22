@@ -2,6 +2,7 @@ package edu.uw.mmk42.dotify
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.ericchee.songdataprovider.Song
@@ -18,7 +19,7 @@ class SongListActivity : AppCompatActivity() {
         title = "All Songs"
 
         binding = ActivitySongListBinding.inflate(layoutInflater).apply { setContentView(root) }
-        //val songs = listOf("dua lipa", "justin", "taylor swift", "lauv")
+
         songs = SongDataProvider.getAllSongs()
         with(binding) {
             val adapter = SongListAdapter(songs)
@@ -41,16 +42,18 @@ class SongListActivity : AppCompatActivity() {
                 navigateToPlayerActivity(this@SongListActivity, currSong)
             }
 
-
-
             adapter.onSongLongClickListener = {position, song ->
-                currSong = song
-                //tvCurrSong.text = ""
-                //tvCurrSong.visibility = View.GONE
-                var newList = songs.toMutableList()
+                //currSong = song
+                /*var newList = songs.toMutableList()
                 newList.removeAt(position)
                 songs = newList
-                adapter.updateSongs(newList)
+                adapter.updateSongs(newList)*/
+                val newSongs = songs.toMutableList().apply {
+                    Log.i("mmk42-11", "position to delete is $position")
+                    removeAt(position)
+                }
+                Log.i("mmk42-12", "position to delete is $position")
+                adapter.updateSongs(newSongs)
                 Toast.makeText(this@SongListActivity, root.context.getString(R.string.remove_song_format, song.title), Toast.LENGTH_SHORT).show()
                 true
             }

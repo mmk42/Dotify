@@ -43,6 +43,7 @@ class PlayerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player_activity)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding = ActivityPlayerActivityBinding.inflate(layoutInflater).apply{setContentView(root)}
 
         with(binding) {
@@ -118,5 +119,12 @@ class PlayerActivity : AppCompatActivity() {
         with(binding){
             txtNumPlays.setTextColor(Color.argb(255, Random.nextInt(256), Random.nextInt(256), Random.nextInt(256)))
         }
+    }
+
+    // up button
+    override fun onSupportNavigateUp(): Boolean {
+        //Handle when the up button is clicked
+        finish()
+        return super.onSupportNavigateUp()
     }
 }

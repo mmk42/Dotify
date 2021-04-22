@@ -16,6 +16,7 @@ class SongListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_song_list)
         title = "All Songs"
+
         binding = ActivitySongListBinding.inflate(layoutInflater).apply { setContentView(root) }
         //val songs = listOf("dua lipa", "justin", "taylor swift", "lauv")
         songs = SongDataProvider.getAllSongs()
@@ -55,4 +56,5 @@ class SongListActivity : AppCompatActivity() {
             }
         }
     }
+
 }

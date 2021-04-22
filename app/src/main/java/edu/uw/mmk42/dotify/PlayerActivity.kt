@@ -41,19 +41,15 @@ class PlayerActivity : AppCompatActivity() {
     private var randomNumber = Random.nextInt(1000, 10000)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.i("created_1_mmk42", "created!")
         super.onCreate(savedInstanceState)
-        Log.i("created_2_mmk42", "created!")
         setContentView(R.layout.activity_player_activity)
-        Log.i("created_3_mmk42", "created!")
         binding = ActivityPlayerActivityBinding.inflate(layoutInflater).apply{setContentView(root)}
-        Log.i("created_4_mmk42", "created!")
 
         with(binding) {
             val song: Song? = intent.getParcelableExtra<Song>(SONG_KEY)
             txtArtistName.text = song?.artist
             txtSongTitle.text = song?.title
-            //imgSongCover.setImageResource(song.largeImageID)
+            imgSongCover.setImageResource(song!!.largeImageID) // ASK IF THIS IS OK
 
             // Click Listeners
             /*
@@ -110,13 +106,17 @@ class PlayerActivity : AppCompatActivity() {
     }
     // increments the number of plays when the play button is clicked
     fun playClicked(){
-        randomNumber = randomNumber + 1
-        txtNumPlays.text = "$randomNumber plays"
+        with(binding){
+            randomNumber = randomNumber + 1
+            txtNumPlays.text = "$randomNumber plays"
+        }
+
 
     }
     // chenges the color or the number of plays when the song cover is long clicked
     fun songCoverLongClick(){
-        txtNumPlays.setTextColor(Color.argb(255, Random.nextInt(256), Random.nextInt(256), Random.nextInt(256)))
-
+        with(binding){
+            txtNumPlays.setTextColor(Color.argb(255, Random.nextInt(256), Random.nextInt(256), Random.nextInt(256)))
+        }
     }
 }

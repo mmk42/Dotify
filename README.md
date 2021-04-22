@@ -15,7 +15,7 @@ Short click a song to add it to the mini player.
 Click the mini player to go to the single song page.
 Click shuffle to shuffle list of songs. 
 
-The number of plays is initially set to a random number and increases by 1 every time the play button is pressed
+On single song page, the number of plays is initially set to a random number and increases by 1 every time the play button is pressed
 When the previous button is pressed, a brief notification of “Skipping to previous track” is shown
 When the next button is pressed, a brief notification of “Skipping to next track” is shown.
 Long press the cover photo of the song in order to change the color of the number of plays.

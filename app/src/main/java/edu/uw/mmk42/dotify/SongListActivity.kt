@@ -13,7 +13,7 @@ class SongListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_song_list)
-
+        title = "All Songs"
         binding = ActivitySongListBinding.inflate(layoutInflater).apply { setContentView(root) }
         //val songs = listOf("dua lipa", "justin", "taylor swift", "lauv")
         val songs = SongDataProvider.getAllSongs()

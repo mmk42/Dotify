@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.*
 import kotlin.random.Random
 
-class MainActivity : AppCompatActivity() {
+class PlayerActivity : AppCompatActivity() {
 
     private lateinit var btnChangeUser: Button
     private lateinit var btnPlayPrev: ImageView

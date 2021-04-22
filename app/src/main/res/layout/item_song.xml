@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:id="@+id/itemRoot">
+
+    <ImageView
+        android:id="@+id/ivCoverArt"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/strangers_cover_art"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name of song"
+        android:textSize="20sp"
+        android:layout_marginStart="12dp"
+        android:layout_gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/tvArtist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name of artist"
+        android:textSize="20sp"
+        android:layout_marginStart="12dp"
+        android:layout_gravity="center_vertical"
+        />
+    </LinearLayout>
+
+</LinearLayout>

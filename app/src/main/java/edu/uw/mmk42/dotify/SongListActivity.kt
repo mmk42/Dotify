@@ -2,6 +2,7 @@ package edu.uw.mmk42.dotify
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.ericchee.songdataprovider.SongDataProvider
 import edu.uw.mmk42.dotify.databinding.ActivityMainBinding
@@ -21,13 +22,18 @@ class SongListActivity : AppCompatActivity() {
             val adapter = SongListAdapter(songs)
             rvSongs.adapter = adapter
 
-            adapter.onSongClickListener = {position, name ->
-                Toast.makeText(this@SongListActivity, "You clicked at pos: $position for $name", Toast.LENGTH_SHORT).show()
+            adapter.onSongClickListener = {position, song ->
+                tvCurrSong.text = root.context.getString(R.string.curr_song_format, song.title,song.artist)
+                //Toast.makeText(this@SongListActivity, "You clicked at pos: $position for $song", Toast.LENGTH_SHORT).show()
             }
 
             btnShuffle.setOnClickListener {
                 // On Refresh Click, update the list
                 adapter.updateSongs(songs.toMutableList().shuffled())
+            }
+
+            tvCurrSong.setOnClickListener {
+                //navigateToPlayerActivity(song)
             }
         }
     }

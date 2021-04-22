@@ -1,13 +1,18 @@
 package edu.uw.mmk42.dotify
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import com.ericchee.songdataprovider.Song
 import kotlin.random.Random
 
+fun navigateToPlayerActivity(song: Song) {
+    val intent = Intent()
+}
 class PlayerActivity : AppCompatActivity() {
 
     private lateinit var btnChangeUser: Button

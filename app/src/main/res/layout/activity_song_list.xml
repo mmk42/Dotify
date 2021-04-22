@@ -16,6 +16,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_song"
         />
+
     <Button
         android:id="@+id/btnShuffle"
         android:layout_width="wrap_content"
@@ -23,6 +24,19 @@
         android:text="Shuffle List"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvSongs"
+        />
+    <TextView
+        android:id="@+id/tvCurrSong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Song name and artist"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnShuffle"
+        app:layout_constraintTop_toTopOf="@id/btnShuffle"
+        app:layout_constraintBottom_toBottomOf="@id/btnShuffle"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

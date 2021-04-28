@@ -6,7 +6,7 @@ This is an app that let's the user listen to music from the cloud.
 I have completed extra credit #1, #2, #3.
 
 ## Screenshots
-<img src="screenshot2.PNG" alt="Screenshot of the app" height="500" />
+<img src="screenshot1.PNG" alt="Screenshot of the app" height="500" />
 
 
 ## Installation & Usage

@@ -44,12 +44,7 @@ class PlayerActivity : AppCompatActivity() {
                 imgSongCover.setImageResource(song.largeImageID)
             }
 
-
             // Click Listeners
-            /*
-            btnChangeUser.setOnClickListener {
-                changeUserClicked(btnChangeUser)
-            }*/
             imgPlayPrev.setOnClickListener {
                 playPrevClicked()
             }
@@ -65,28 +60,13 @@ class PlayerActivity : AppCompatActivity() {
             }
             txtNumPlays.text = "$randomNumber plays"
 
+            btnSettings.setOnClickListener{
+                launchSettingsActivity(this@PlayerActivity)
+            }
+
         }
     }
-    /*
-    // changes the username
-    fun changeUserClicked(btnChangeUser: Button) {
-        //
-        if(txtUsername.visibility == View.GONE) {
-            if(edtxtUsername.text.toString() == ""){
-                Toast.makeText(this, "Username cannot be empty", Toast.LENGTH_SHORT).show()
-            } else {
-                txtUsername.visibility = View.VISIBLE
-                edtxtUsername.visibility = View.GONE
-                txtUsername.text = edtxtUsername.text
-                btnChangeUser.text = "Change User"
-            }
-        } else {
-            txtUsername.visibility = View.GONE
-            edtxtUsername.visibility = View.VISIBLE
-            btnChangeUser.text = "Apply"
-        }
 
-    }*/
 
     // Toasts when prev button is clicked
     fun playPrevClicked(){

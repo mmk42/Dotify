@@ -19,6 +19,12 @@
         <action
             android:id="@+id/action_settingsFragment_to_statisticsFragment"
             app:destination="@id/statisticsFragment" />
+        <argument
+            android:name="song"
+            app:argType="com.ericchee.songdataprovider.Song" />
+        <argument
+            android:name="playNum"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -34,5 +40,12 @@
         android:id="@+id/statisticsFragment"
         android:name="edu.uw.mmk42.dotify.StatisticsFragment"
         android:label="fragment_statistics"
-        tools:layout="@layout/fragment_statistics" />
+        tools:layout="@layout/fragment_statistics" >
+        <argument
+            android:name="song"
+            app:argType="com.ericchee.songdataprovider.Song" />
+        <argument
+            android:name="playNum"
+            app:argType="integer" />
+    </fragment>
 </navigation>

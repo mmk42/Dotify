@@ -44,6 +44,7 @@ class PlayerActivity : AppCompatActivity() {
                 imgSongCover.setImageResource(song.largeImageID)
             }
 
+
             // Click Listeners
             imgPlayPrev.setOnClickListener {
                 playPrevClicked()
@@ -61,7 +62,9 @@ class PlayerActivity : AppCompatActivity() {
             txtNumPlays.text = "$randomNumber plays"
 
             btnSettings.setOnClickListener{
-                launchSettingsActivity(this@PlayerActivity)
+                if(song != null) {
+                    launchSettingsActivity(this@PlayerActivity, song, randomNumber)
+                }
             }
 
         }

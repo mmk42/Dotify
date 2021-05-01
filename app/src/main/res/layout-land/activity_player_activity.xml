@@ -12,63 +12,52 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SETTINGS"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="btnSettings"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="64dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgSongCover"
-        android:contentDescription="This is an image the song cover"
         android:layout_width="350dp"
         android:layout_height="350dp"
-        app:layout_constraintTop_toBottomOf="@id/barrier"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="4dp"
+        android:contentDescription="This is an image the song cover"
         app:layout_constraintDimensionRatio="1:1"
-        app:srcCompat="@drawable/strangers_cover_art"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/strangers_cover_art" />
     <TextView
         android:id="@+id/txtSongTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="35sp"
+        android:textSize="30sp"
         android:text="Strangers"
-        app:layout_constraintTop_toBottomOf="@id/imgSongCover"
+        app:layout_constraintTop_toBottomOf="@id/btnSettings"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgSongCover"
         />
     <TextView
         android:id="@+id/txtArtistName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:text="Seven Lions featuring Trove Lo, Myon, Shane"
         android:maxLines="1"
         android:ellipsize="end"
         app:layout_constraintTop_toBottomOf="@id/txtSongTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgSongCover"
         />
     <TextView
         android:id="@+id/txtNumPlays"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="@color/default_color"
         android:text="Number Plays"
         app:layout_constraintTop_toBottomOf="@id/txtArtistName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgSongCover"
         />
 
     <ImageView
@@ -77,7 +66,7 @@
         android:layout_height="100dp"
         app:srcCompat="@android:drawable/ic_media_previous"
         app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgSongCover"
         app:layout_constraintTop_toBottomOf="@id/txtNumPlays"
         app:layout_constraintEnd_toStartOf="@id/imgPlay"
         app:layout_constraintBottom_toBottomOf="parent"/>
@@ -102,6 +91,8 @@
         app:layout_constraintStart_toEndOf="@id/imgPlay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

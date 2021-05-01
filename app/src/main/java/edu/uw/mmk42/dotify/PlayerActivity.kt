@@ -14,6 +14,7 @@ import kotlin.random.Random
 private const val SONG_KEY = "song"
 private const val SONG_NAME_KEY = "song_name"
 private const val SONG_ARTIST_KEY = "song_artist"
+private const val COUNT_VALUE_KEY = "COUNT_VALUE_KEY"
 
 
 fun navigateToPlayerActivity(context: Context, song: Song) = with(context) {
@@ -33,6 +34,10 @@ class PlayerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player_activity)
+        if (savedInstanceState != null) {
+            randomNumber = savedInstanceState.getInt(COUNT_VALUE_KEY, 1)
+        }
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding = ActivityPlayerActivityBinding.inflate(layoutInflater).apply{setContentView(root)}
 
@@ -102,5 +107,10 @@ class PlayerActivity : AppCompatActivity() {
         //Handle when the up button is clicked
         finish()
         return super.onSupportNavigateUp()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(COUNT_VALUE_KEY, randomNumber)
+        super.onSaveInstanceState(outState)
     }
 }

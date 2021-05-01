@@ -29,18 +29,18 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="edu.uw.mmk42.dotify.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/aboutFragment"
         android:name="edu.uw.mmk42.dotify.AboutFragment"
-        android:label="fragment_about"
+        android:label="About"
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/statisticsFragment"
         android:name="edu.uw.mmk42.dotify.StatisticsFragment"
-        android:label="fragment_statistics"
-        tools:layout="@layout/fragment_statistics" >
+        android:label="Statistics"
+        tools:layout="@layout/fragment_statistics">
         <argument
             android:name="song"
             app:argType="com.ericchee.songdataprovider.Song" />

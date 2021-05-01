@@ -1,9 +1,9 @@
-# Dotify Homework 2 – Activities & RecyclerView by Midori Komi
+# Dotify - HW3 – Fragments, Activity Lifecycle & Rotation
 
 This is an app that let's the user listen to music from the cloud.
 
 ## Extra credit
-I have completed extra credit #1, #2, #3
+I have completed extra credit #1 (This criterion is linked to a Learning OutcomeEvery fragment has an Up/Back button other than SettingsFragment)
 
 ## Screenshots
 <img src="screenshot2.PNG" alt="Screenshot of the app" height="500" />

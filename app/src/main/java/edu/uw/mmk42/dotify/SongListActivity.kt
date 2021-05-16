@@ -54,11 +54,6 @@ class SongListActivity : AppCompatActivity() {
             }
 
             adapter.onSongLongClickListener = {position, song ->
-                //currSong = song
-                /*var newList = songs.toMutableList()
-                newList.removeAt(position)
-                songs = newList
-                adapter.updateSongs(newList)*/
                 val newSongs = songs.toMutableList().apply {
                     //Log.i("mmk42-11", "position to delete is $position")
                     remove(song)

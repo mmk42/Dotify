@@ -15,6 +15,10 @@ class SongListActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySongListBinding
     private lateinit var currSong: Song
     private lateinit var songs: List<Song>
+
+    private val dotifyApp: DotifyApplication by lazy { application as DotifyApplication }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_song_list)
@@ -40,7 +44,10 @@ class SongListActivity : AppCompatActivity() {
                 currSong = song
                 tvCurrSong.visibility = View.VISIBLE
                 tvCurrSong.text = root.context.getString(R.string.curr_song_format, song.title,song.artist)
-                //Toast.makeText(this@SongListActivity, "You clicked at pos: $position for $song", Toast.LENGTH_SHORT).show()
+
+                dotifyApp.musicManager.onSongClicked()
+                //val numClicked = dotifyApp.musicManager.numberOfSongsClicked
+                //Toast.makeText(this@SongListActivity, "You've clicked on: $position songs", Toast.LENGTH_SHORT).show()
 
             }
 

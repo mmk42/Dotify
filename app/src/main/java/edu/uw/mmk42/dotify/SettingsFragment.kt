@@ -31,7 +31,7 @@ class SettingsFragment : Fragment() {
         with(binding) {
             btnAbout.setOnClickListener{
                 navController.navigate(R.id.aboutFragment)
-                Toast.makeText(requireContext(), "You clicked on about button", Toast.LENGTH_SHORT).show()
+                // Toast.makeText(requireContext(), "You clicked on about button", Toast.LENGTH_SHORT).show()
             }
             btnProfile.setOnClickListener{
                 navController.navigate(R.id.profileFragment)

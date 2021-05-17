@@ -39,12 +39,12 @@ class SettingsFragment : Fragment() {
             }
             btnProfile.setOnClickListener{
                 navController.navigate(R.id.profileFragment)
-                Toast.makeText(requireContext(), "You clicked on profile button", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "You clicked on profile button", Toast.LENGTH_SHORT).show()
             }
             btnStatistics.setOnClickListener{
                 //navController.navigate(R.id.statisticsFragment)
                 navController.navigate(SettingsFragmentDirections.actionSettingsFragmentToStatisticsFragment(song, playNum))
-                Toast.makeText(requireContext(), "You clicked on stats button", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "You clicked on stats button", Toast.LENGTH_SHORT).show()
             }
         }
 

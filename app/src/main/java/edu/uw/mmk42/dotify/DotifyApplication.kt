@@ -19,6 +19,6 @@ class DotifyApplication: Application() {
 
         //Log.i("dotifyApp", "DotifyApp has booted")
 
-        Toast.makeText(this,"Application has booted", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this,"Application has booted", Toast.LENGTH_SHORT).show()
     }
 }

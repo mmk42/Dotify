@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import coil.load
 import edu.uw.mmk42.dotify.databinding.FragmentProfileBinding
 import edu.uw.mmk42.dotify.databinding.FragmentStatisticsBinding
 import edu.uw.mmk42.dotify.repository.UserRepository
@@ -27,6 +28,11 @@ class ProfileFragment : Fragment() {
         val binding = FragmentProfileBinding.inflate(inflater)
         with(binding) {
             Log.i(" before lifecycle", "test")
+
+            swipeToRefreshLayout.setOnRefreshListener {
+                imgProfilePicture.load("https://raw.githubusercontent.com/echeeUW/codesnippets/master/voldemort.png")
+            }
+
             lifecycleScope.launch {
                 val user = userRepository.getUser()
                 val username = user.username
@@ -34,15 +40,18 @@ class ProfileFragment : Fragment() {
                 val lastName = user.lastName
                 val hasNose = user.hasNose
                 val platform = user.platform
+                val profilePicURL = user.profilePicURL
 
                 txtName.text = "Name: " + firstName + " " + lastName
                 txtUsername.text = "Username: " + username
                 txtHasNose.text = "Has Nose: " + hasNose.toString()
                 txtPlatform.text = "Platform: " + platform.toString()
-                //Toast.makeText(requireContext(), user.username, Toast.LENGTH_SHORT).show()
+                imgProfilePicture.load(profilePicURL)
+
             }
 
             btnRefresh.setOnClickListener {
+
                 Log.i("btnRefresh", "Refresh button was clicked")
                 txtName.text = "Toto"
                 txtUsername.text = "totobear"

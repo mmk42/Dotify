@@ -19,7 +19,8 @@ import kotlinx.coroutines.launch
 class ProfileFragment : Fragment() {
 
     val safeArgs: ProfileFragmentArgs by navArgs()
-    //lateinit var dotifyApp: DotifyApplication
+    private lateinit var binding: FragmentProfileBinding
+
     private val dotifyApp: DotifyApplication by lazy { requireActivity().application as DotifyApplication }
     private val userRepository by lazy { dotifyApp.userRepository }
 
@@ -29,39 +30,105 @@ class ProfileFragment : Fragment() {
         with(binding) {
             Log.i(" before lifecycle", "test")
 
+            // on swipe down, refresh (reload all data from user and display in fragment)
             swipeToRefreshLayout.setOnRefreshListener {
-                imgProfilePicture.load("https://raw.githubusercontent.com/echeeUW/codesnippets/master/voldemort.png")
+                lifecycleScope.launch {
+                    kotlin.runCatching {
+                        val user = userRepository.getUser()
+                        val username = user.username
+                        val firstName = user.firstName
+                        val lastName = user.lastName
+                        val hasNose = user.hasNose
+                        val platform = user.platform
+                        val profilePicURL = user.profilePicURL
+
+                        txtName.text = "Name: " + firstName + " " + lastName
+                        txtUsername.text = "Username: " + username
+                        txtHasNose.text = "Has Nose: " + hasNose.toString()
+                        txtPlatform.text = "Platform: " + platform.toString()
+                        imgProfilePicture.load(profilePicURL)
+
+                        txtUsername.visibility = View.VISIBLE
+                        txtHasNose.visibility = View.VISIBLE
+                        txtPlatform.visibility = View.VISIBLE
+                        imgProfilePicture.visibility = View.VISIBLE
+                    }.onFailure {
+                        //Toast.makeText(requireContext(),"Error Occured", Toast.LENGTH_SHORT).show()
+                        txtName.text = "An Error Has Occurred"
+                        txtUsername.visibility = View.GONE
+                        txtHasNose.visibility = View.GONE
+                        txtPlatform.visibility = View.GONE
+                        imgProfilePicture.visibility = View.GONE
+
+                    }
+                }
+                swipeToRefreshLayout.isRefreshing=false
             }
 
+            // ask about how to reduce redundancy
             lifecycleScope.launch {
-                val user = userRepository.getUser()
-                val username = user.username
-                val firstName = user.firstName
-                val lastName = user.lastName
-                val hasNose = user.hasNose
-                val platform = user.platform
-                val profilePicURL = user.profilePicURL
+                kotlin.runCatching {
+                    val user = userRepository.getUser()
+                    val username = user.username
+                    val firstName = user.firstName
+                    val lastName = user.lastName
+                    val hasNose = user.hasNose
+                    val platform = user.platform
+                    val profilePicURL = user.profilePicURL
 
-                txtName.text = "Name: " + firstName + " " + lastName
-                txtUsername.text = "Username: " + username
-                txtHasNose.text = "Has Nose: " + hasNose.toString()
-                txtPlatform.text = "Platform: " + platform.toString()
-                imgProfilePicture.load(profilePicURL)
+                    txtName.text = "Name: " + firstName + " " + lastName
+                    txtUsername.text = "Username: " + username
+                    txtHasNose.text = "Has Nose: " + hasNose.toString()
+                    txtPlatform.text = "Platform: " + platform.toString()
+                    imgProfilePicture.load(profilePicURL)
 
+                    txtUsername.visibility = View.VISIBLE
+                    txtHasNose.visibility = View.VISIBLE
+                    txtPlatform.visibility = View.VISIBLE
+                    imgProfilePicture.visibility = View.VISIBLE
+                }.onFailure {
+                    txtName.text = "An Error Has Occurred"
+                    txtUsername.visibility = View.GONE
+                    txtHasNose.visibility = View.GONE
+                    txtPlatform.visibility = View.GONE
+                    imgProfilePicture.visibility = View.GONE
+                }
             }
 
             btnRefresh.setOnClickListener {
-
                 Log.i("btnRefresh", "Refresh button was clicked")
-                txtName.text = "Toto"
-                txtUsername.text = "totobear"
+
             }
-            //imgSongCover.setImageResource(safeArgs.song.largeImageID)
-            //txtClickNum.text = safeArgs.song.title + " has been played "+ safeArgs.playNum.toString() +" times"
         }
 
         return binding.root
     }
 
+//    private fun loadUser() {
+//        Log.i("loadUser", "load user was clicked")
+//
+//       // with(binding) {
+//            lifecycleScope.launch {
+//                Log.i("loadUser", "before user loaded")
+//                val user = userRepository.getUser()
+//                Log.i("loadUser", "after user loaded")
+//                val username = user.username
+//                Log.i("loadUser", username)
+//                val firstName = user.firstName
+//                val lastName = user.lastName
+//                val hasNose = user.hasNose
+//                val platform = user.platform
+//                val profilePicURL = user.profilePicURL
+//
+//                binding.txtName.text = "Name: " + firstName + " " + lastName
+//                binding.txtUsername.text = "Username: " + username
+//                binding.txtHasNose.text = "Has Nose: " + hasNose.toString()
+//                binding.txtPlatform.text = "Platform: " + platform.toString()
+//                binding.imgProfilePicture.load(profilePicURL)
+//
+//            }
+//       // }
+//
+//    }
 
 }

@@ -1,29 +1,19 @@
-# Dotify - HW3 – Fragments, Activity Lifecycle & Rotation
+# Dotify - HW4 – Application, JSON parsing, HTTP REST calls
 
 This is an app that let's the user listen to music from the cloud.
 
 ## Extra credit
-I have completed extra credit #1 (This criterion is linked to a Learning OutcomeEvery fragment has an Up/Back button other than SettingsFragment)
+I have completed extra credit #1 (Add pull down to refresh function to your activity to trigger an HTTP fetch)
 
 ## Screenshots
 <img src="screenshot2.PNG" alt="Screenshot of the app" height="500" />
-<img src="hw3_1.PNG" alt="Screenshot of the app" height="500" />
-<img src="hw3_2.PNG" alt="Screenshot of the app" height="500" />
-<img src="hw3_3.PNG" alt="Screenshot of the app" height="500" />
-<img src="hw3_4.PNG" alt="Screenshot of the app" height="500" />
-<img src="hw3_5.PNG" alt="Screenshot of the app" height="500" />
+<img src="hw4-1.PNG" alt="Screenshot of the app" height="500" />
+<img src="hw4-2.PNG" alt="Screenshot of the app" height="500" />
 
-## Installation & Usage
-On song list page, long click a song to delete from list. 
-Short click a song to add it to the mini player. 
-Click the mini player to go to the single song page.
-Click shuffle to shuffle list of songs. 
+## Update Details
+1. Android’s Application class is utilized to keep track of the number of songs the user clicks on.
+   This number will be displayed with toasts.
+2. An HTTP request is used to get information for the user profile. Coil is used to load the user image using the url from the http request.
+   If the request fails an error message is displayed.
 
-On single song page, the number of plays is initially set to a random number and increases by 1 every time the play button is pressed
-When the previous button is pressed, a brief notification of “Skipping to previous track” is shown
-When the next button is pressed, a brief notification of “Skipping to next track” is shown.
-Long press the cover photo of the song in order to change the color of the number of plays.
-Click back arrow to go to the song list page.
-
-Go to the settings page to navigate to the profile page, about page, or statistics page.
 

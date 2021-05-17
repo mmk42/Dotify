@@ -95,10 +95,6 @@ class ProfileFragment : Fragment() {
                 }
             }
 
-            btnRefresh.setOnClickListener {
-                Log.i("btnRefresh", "Refresh button was clicked")
-
-            }
         }
 
         return binding.root

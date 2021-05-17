@@ -10,4 +10,8 @@ class MusicManager {
         numOfSongsClicked++
         Log.i("num songs", "num songs clicked is: $numOfSongsClicked")
     }
+
+    fun getNumOfSongsClicked(): Int {
+        return numOfSongsClicked
+    }
 }

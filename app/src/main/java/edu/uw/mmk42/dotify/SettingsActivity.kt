@@ -30,10 +30,6 @@ class SettingsActivity : AppCompatActivity() {
 
     private val navController by lazy { findNavController(R.id.navHost) }
 
-//    private val dotifyApp: DotifyApplication by lazy { application as DotifyApplication }
-//    private val userRepository by lazy { dotifyApp.userRepository }
-
-
 
     private lateinit var binding: ActivitySettingsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,18 +37,6 @@ class SettingsActivity : AppCompatActivity() {
 
         binding = ActivitySettingsBinding.inflate(layoutInflater).apply { setContentView(root) }
         with(binding) {
-
-//            Log.i(" before lifecycle", "test")
-//            lifecycleScope.launch {
-//                val user = userRepository.getUser()
-//                val username = user.username
-//                Log.i(" before test username", "test")
-//                Log.i("test username", username)
-//
-//                //Toast.makeText(this@SettingsActivity, user.username, Toast.LENGTH_SHORT).show()
-//            }
-
-
 
             navController.setGraph(R.navigation.nav_graph, intent.extras)
             title = "Settings"

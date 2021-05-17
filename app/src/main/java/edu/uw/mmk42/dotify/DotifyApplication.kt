@@ -11,13 +11,15 @@ class DotifyApplication: Application() {
 
     lateinit var userRepository: UserRepository
 
-    val musicManager: MusicManager by lazy {MusicManager()}
+    //val musicManager: MusicManager by lazy {MusicManager()}
+    lateinit var musicManager: MusicManager
 
     override fun onCreate() {
         super.onCreate()
         userRepository = UserRepository()
+        musicManager = MusicManager()
 
-        //Log.i("dotifyApp", "DotifyApp has booted")
+        Log.i("dotifyApp", "Number of songs clicked is" + musicManager.getNumOfSongsClicked())
 
         //Toast.makeText(this,"Application has booted", Toast.LENGTH_SHORT).show()
     }

@@ -45,9 +45,11 @@ class SongListActivity : AppCompatActivity() {
                 tvCurrSong.visibility = View.VISIBLE
                 tvCurrSong.text = root.context.getString(R.string.curr_song_format, song.title,song.artist)
 
+                // increments number of songs clicked
+                // double check if this is how to do this
                 dotifyApp.musicManager.onSongClicked()
-                //val numClicked = dotifyApp.musicManager.numberOfSongsClicked
-                //Toast.makeText(this@SongListActivity, "You've clicked on: $position songs", Toast.LENGTH_SHORT).show()
+                val numClicked = dotifyApp.musicManager.getNumOfSongsClicked()
+                Toast.makeText(this@SongListActivity, "You've clicked on: $numClicked songs", Toast.LENGTH_SHORT).show()
 
             }
 

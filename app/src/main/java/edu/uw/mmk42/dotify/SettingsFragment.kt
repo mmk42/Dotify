@@ -15,6 +15,9 @@ class SettingsFragment : Fragment() {
     val safeArgs: SettingsFragmentArgs by navArgs()
 
     private val navController by lazy {findNavController()}
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,6 +27,7 @@ class SettingsFragment : Fragment() {
 
         val song = safeArgs.song
         val playNum = safeArgs.playNum
+
         //val testtoast = recievedPlayNum.toString()
         //val testtoast = recievedSong.toString()
         //Toast.makeText(context, testtoast, Toast.LENGTH_SHORT).show()

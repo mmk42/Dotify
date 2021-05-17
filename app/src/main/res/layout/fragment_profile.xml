@@ -29,14 +29,21 @@
         app:layout_constraintTop_toBottomOf="@id/txtName"
         app:layout_constraintStart_toStartOf="parent"/>
     <TextView
-        android:id="@+id/txtAge"
+        android:id="@+id/txtHasNose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25dp"
-        android:text="Age: unknown"
+        android:text="Has Nose: unknown"
         app:layout_constraintTop_toBottomOf="@id/txtUsername"
         app:layout_constraintStart_toStartOf="parent"/>
-
+    <TextView
+        android:id="@+id/txtPlatform"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:text="Platform: unknown"
+        app:layout_constraintTop_toBottomOf="@id/txtHasNose"
+        app:layout_constraintStart_toStartOf="parent"/>
     <Button
         android:id="@+id/btnRefresh"
         android:layout_width="wrap_content"

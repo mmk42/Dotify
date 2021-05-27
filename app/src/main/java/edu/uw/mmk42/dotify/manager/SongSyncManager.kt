@@ -29,10 +29,10 @@ class SongSyncManager(context: Context) {
 
     fun syncSongsPeriodically() {
 
-//        if(isSongSyncRunning()) {
+        if(isSongSyncRunning()) {
 //            Log.i("SongSyncWorker", "syncing songs periodically got returned")
-//            return
-//        }
+            return
+        }
         val request = PeriodicWorkRequestBuilder<SongSyncWorker>(20, TimeUnit.MINUTES)
             .setInitialDelay(5,TimeUnit.SECONDS)
             .setConstraints(

@@ -76,10 +76,10 @@ class SettingsFragment : Fragment() {
                 //songNotificationManager.publishNewSongNotification(SongDataProvider.getAllSongs().random())
                 if(isChecked) {
                     songSyncManager.syncSongsPeriodically()
-                    Log.i("SettingsFragment", "notifications is checked")
+//                    Log.i("SettingsFragment", "notifications is checked")
                 } else {
                     songSyncManager.stopPeriodicallySyncing()
-                    Log.i("SettingsFragment", "notifications is un-checked")
+//                    Log.i("SettingsFragment", "notifications is un-checked")
                 }
             }
         }

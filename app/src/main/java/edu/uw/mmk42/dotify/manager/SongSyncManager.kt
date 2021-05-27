@@ -1,6 +1,7 @@
 package edu.uw.mmk42.dotify.manager
 
 import android.content.Context
+import android.util.Log
 import androidx.work.*
 import edu.uw.mmk42.dotify.SongSyncWorker
 import java.sql.Time
@@ -28,9 +29,10 @@ class SongSyncManager(context: Context) {
 
     fun syncSongsPeriodically() {
 
-        if(isSongSyncRunning()) {
-            return
-        }
+//        if(isSongSyncRunning()) {
+//            Log.i("SongSyncWorker", "syncing songs periodically got returned")
+//            return
+//        }
         val request = PeriodicWorkRequestBuilder<SongSyncWorker>(20, TimeUnit.MINUTES)
             .setInitialDelay(5,TimeUnit.SECONDS)
             .setConstraints(
@@ -40,7 +42,7 @@ class SongSyncManager(context: Context) {
             )
             .addTag(SONG_SYNC_WORK_TAG)
             .build()
-
+//        Log.i("SongSyncWorker", "syncing songs periodically got enque?")
         workManager.enqueue(request)
     }
 

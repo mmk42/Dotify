@@ -1,6 +1,7 @@
 package edu.uw.mmk42.dotify
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ class SettingsFragment : Fragment() {
     private val DotifyApp by lazy {requireActivity().application as DotifyApplication}
     private val songSyncManager: SongSyncManager by lazy { DotifyApp.songSyncManager}
     private val songNotificationManager: SongNotificationManager by lazy { DotifyApp.songNotificationManager}
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,18 +52,35 @@ class SettingsFragment : Fragment() {
                 navController.navigate(SettingsFragmentDirections.actionSettingsFragmentToStatisticsFragment(song, playNum))
                 //Toast.makeText(requireContext(), "You clicked on stats button", Toast.LENGTH_SHORT).show()
             }
-            btnTest.setOnClickListener {
-                // execute work in the background
-                songSyncManager.syncSongs()
-            }
 
-            btnTestPeriodically.setOnClickListener {
-                // execute work in the background
-                songSyncManager.syncSongsPeriodically()
-            }
+//            btnTest.setOnClickListener {
+//                // execute work in the background
+//                songSyncManager.syncSongs()
+//            }
+//
+//            btnTestPeriodically.setOnClickListener {
+//                // execute work in the background
+//                songSyncManager.syncSongsPeriodically()
+//            }
+//
+//            btnTestNotify.setOnClickListener {
+//                songNotificationManager.publishNewSongNotification(SongDataProvider.getAllSongs().random())
+//                //songSyncManager.syncSongsPeriodically()
+//            }
 
-            btnTestNotify.setOnClickListener {
-                songNotificationManager.publishNewSongNotification(SongDataProvider.getAllSongs().random())
+            songNotificationManager.isNotificationsEnabled = switchNotificationsEnabled.isChecked
+
+            switchNotificationsEnabled.setOnCheckedChangeListener {_, isChecked ->
+
+                songNotificationManager.isNotificationsEnabled = isChecked
+                //songNotificationManager.publishNewSongNotification(SongDataProvider.getAllSongs().random())
+                if(isChecked) {
+                    songSyncManager.syncSongsPeriodically()
+                    Log.i("SettingsFragment", "notifications is checked")
+                } else {
+                    songSyncManager.stopPeriodicallySyncing()
+                    Log.i("SettingsFragment", "notifications is un-checked")
+                }
             }
         }
 

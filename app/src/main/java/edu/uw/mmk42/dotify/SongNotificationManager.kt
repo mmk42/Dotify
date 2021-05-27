@@ -17,6 +17,7 @@ class SongNotificationManager(
     private val context: Context
 ) {
     val songNotificationManager = NotificationManagerCompat.from(context)
+    var isNotificationsEnabled = true
 
     init {
         // initialize all channels
@@ -24,6 +25,9 @@ class SongNotificationManager(
     }
 
     fun publishNewSongNotification(song: Song) {
+        if(!isNotificationsEnabled) {
+            return
+        }
         // define the intent or action you want when uer taps on notification
         val intent = Intent(context, PlayerActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -72,5 +76,6 @@ class SongNotificationManager(
             songNotificationManager.createNotificationChannel(channel)
         }
     }
+
 
 }

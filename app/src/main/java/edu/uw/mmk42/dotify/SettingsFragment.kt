@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import edu.uw.mmk42.dotify.databinding.FragmentSettingsBinding
+import edu.uw.mmk42.dotify.manager.SongSyncManager
 
 
 class SettingsFragment : Fragment() {
@@ -16,7 +17,9 @@ class SettingsFragment : Fragment() {
 
     private val navController by lazy {findNavController()}
 
-
+    private val DotifyApp by lazy {requireActivity().application as DotifyApplication}
+    private val songSyncManager: SongSyncManager by lazy { DotifyApp.songSyncManager}
+    private val songNotificationManager: SongNotificationManager by lazy { DotifyApp.songNotificationManager}
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +48,19 @@ class SettingsFragment : Fragment() {
                 //navController.navigate(R.id.statisticsFragment)
                 navController.navigate(SettingsFragmentDirections.actionSettingsFragmentToStatisticsFragment(song, playNum))
                 //Toast.makeText(requireContext(), "You clicked on stats button", Toast.LENGTH_SHORT).show()
+            }
+            btnTest.setOnClickListener {
+                // execute work in the background
+                songSyncManager.syncSongs()
+            }
+
+            btnTestPeriodically.setOnClickListener {
+                // execute work in the background
+                songSyncManager.syncSongsPeriodically()
+            }
+
+            btnTestNotify.setOnClickListener {
+                songNotificationManager.publishNewSongNotification()
             }
         }
 

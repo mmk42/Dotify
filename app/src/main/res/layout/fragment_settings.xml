@@ -30,6 +30,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnAbout"
         />
+    <Button
+        android:id="@+id/btnTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnStatistics"
+        />
+    <Button
+        android:id="@+id/btnTestPeriodically"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnTest"
+        />
+    <Button
+        android:id="@+id/btnTestNotify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Notify"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnTestPeriodically"
+        />
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchNotificationsEnabled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Auto Refresh"
+        app:switchPadding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnTestNotify"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

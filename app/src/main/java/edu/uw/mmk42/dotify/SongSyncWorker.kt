@@ -12,7 +12,7 @@ class SongSyncWorker(
 
 
     override suspend fun doWork(): Result {
-        Log.i("SongSYncWOrker", "syncing songs now")
+        Log.i("SongSyncWorker", "syncing songs now")
 
         return Result.success()
     }

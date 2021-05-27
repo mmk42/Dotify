@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.ericchee.songdataprovider.SongDataProvider
 import edu.uw.mmk42.dotify.databinding.FragmentSettingsBinding
 import edu.uw.mmk42.dotify.manager.SongSyncManager
 
@@ -60,7 +61,7 @@ class SettingsFragment : Fragment() {
             }
 
             btnTestNotify.setOnClickListener {
-                songNotificationManager.publishNewSongNotification()
+                songNotificationManager.publishNewSongNotification(SongDataProvider.getAllSongs().random())
             }
         }
 

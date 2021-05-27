@@ -11,10 +11,9 @@ import android.widget.*
 import com.ericchee.songdataprovider.Song
 import edu.uw.mmk42.dotify.databinding.ActivityPlayerActivityBinding
 import kotlin.random.Random
-private const val SONG_KEY = "song"
-private const val SONG_NAME_KEY = "song_name"
-private const val SONG_ARTIST_KEY = "song_artist"
-private const val COUNT_VALUE_KEY = "COUNT_VALUE_KEY"
+
+const val SONG_KEY = "song"
+const val COUNT_VALUE_KEY = "COUNT_VALUE_KEY"
 
 
 fun navigateToPlayerActivity(context: Context, song: Song) = with(context) {

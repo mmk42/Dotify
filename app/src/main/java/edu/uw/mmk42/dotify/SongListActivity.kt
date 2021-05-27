@@ -9,7 +9,7 @@ import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
 import edu.uw.mmk42.dotify.databinding.ActivitySongListBinding
 
-private const val CURR_SONG_KEY = "CURR_SONG_KEY"
+const val CURR_SONG_KEY = "CURR_SONG_KEY"
 
 class SongListActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySongListBinding

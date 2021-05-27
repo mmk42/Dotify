@@ -15,9 +15,9 @@ import edu.uw.mmk42.dotify.model.User
 import edu.uw.mmk42.dotify.repository.UserRepository
 import kotlinx.coroutines.launch
 
-private const val SONG_KEY = "song"
+//const val SONG_KEY = "song"
+
 private const val PLAY_KEY = "playNum"
-//private const val USER_KEY = "user"
 
 fun launchSettingsActivity(context: Context, song: Song, playNum: Int) = with(context){
     startActivity(Intent(this, SettingsActivity::class.java).apply {
